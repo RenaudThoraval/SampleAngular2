@@ -1,0 +1,9 @@
+<div class="container" [class.show]="isVisible">
+    <button class="menuButton" (click)="ToggleVisibility()">Toggle menu</button>
+    <ul class="temperatureList">
+        <li *ngFor="let city of cities">
+            City name: {{city.name}}
+            Temperature: {{city.temperature}} °C
+        </li>
+    </ul>
+</div>

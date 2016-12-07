@@ -1,0 +1,21 @@
+.header{
+    background-color: black;
+    color: white;
+    height: 50px;
+}
+
+.list{
+    list-style-type: none;
+    margin: 0;
+    float: left;
+}
+
+.list li {
+    display: inline;
+}
+
+.menuButton {
+    float: right;
+    cursor: pointer;
+    margin: 5px;
+}
