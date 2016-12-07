@@ -8,6 +8,8 @@ import { HeaderComponent } from "./header/header.component"
 import { RightMenuComponent } from "./rightMenu/rightMenu.component"
 import { RightMenuHandler } from "./rightMenu/rightMenu.handler"
 
+import "rxjs/Rx"
+
 @NgModule({
     imports: [
         BrowserModule,

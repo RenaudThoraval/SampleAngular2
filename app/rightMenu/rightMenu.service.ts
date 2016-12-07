@@ -1,9 +1,7 @@
 import { Injectable } from "@angular/core"
 import { Http } from "@angular/http"
 import { ICity } from "../interfaces/interfaces"
-import { Observable } from "rxjs"
-
-import "rxjs/add/operator/map"
+import { Observable } from "rxjs/Observable"
 
 @Injectable()
 export class RightMenuService {
@@ -15,20 +13,18 @@ export class RightMenuService {
     public GetCities(): Observable<ResponseError | ResponseSuccess> {
         return this._http.get(RightMenuService.API_URL)
             .map((response) => {
-                try {
-                    let result = response.json()
-                    return new ResponseSuccess(
-                        result.list
-                            .map((val: any) => {
-                                return <ICity>{
-                                    name: val.name,
-                                    temperature: val.main.temp
-                                }
-                            })
-                    )
-                } catch (error) {
-                    return new ResponseError(error)
-                }
+                let result = response.json()
+                return new ResponseSuccess(
+                    result.list
+                        .map((val: any) => {
+                            return <ICity>{
+                                name: val.name,
+                                temperature: val.main.temp
+                            }
+                        })
+                )
+            }).catch((error, source) => {
+                return Observable.of(new ResponseError(error))
             })
     }
 }
